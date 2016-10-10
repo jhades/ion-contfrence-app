@@ -18,9 +18,19 @@ import { SpeakerListPage } from '../pages/speaker-list/speaker-list';
 import { TabsPage } from '../pages/tabs/tabs';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 
+import { BaseData } from "../providers/base-data";
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
+// import {AngularFireModule} from "angularfire2";
 
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyBIGS3Bo-Jc3NcvpSELjANCuUohVLI3rJs",
+  authDomain: "fir-2eaaa.firebaseapp.com",
+  databaseURL: "https://fir-2eaaa.firebaseio.com",
+  storageBucket: "fir-2eaaa.appspot.com",
+  messagingSenderId: "443668439244"
+};
 
 @NgModule({
   declarations: [
@@ -40,7 +50,8 @@ import { UserData } from '../providers/user-data';
     TutorialPage
   ],
   imports: [
-    IonicModule.forRoot(ConferenceApp)
+    IonicModule.forRoot(ConferenceApp),
+    // AngularFireModule.initializeApp(firebaseConfig)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -59,6 +70,6 @@ import { UserData } from '../providers/user-data';
     TabsPage,
     TutorialPage
   ],
-  providers: [ConferenceData, UserData, Storage]
+  providers: [BaseData,ConferenceData, UserData, Storage]
 })
 export class AppModule {}

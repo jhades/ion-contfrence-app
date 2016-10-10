@@ -11,6 +11,10 @@ import { TutorialPage } from '../pages/tutorial/tutorial';
 
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
+import { BaseData} from "../providers/base-data";
+
+// import { AngularFire,FirebaseListObservable} from "angularfire2";
+import {initializeApp,database} from "firebase";
 
 export interface PageObj {
   title: string;
@@ -46,18 +50,24 @@ export class ConferenceApp {
   ];
   rootPage: any = TutorialPage;
 
+  // items:FirebaseListObservable<any[]>;
+
   constructor(
     public events: Events,
     public userData: UserData,
     public menu: MenuController,
     platform: Platform,
-    confData: ConferenceData
+    confData: ConferenceData,
+    baseData: BaseData,
+    // af:AngularFire
   ) {
     // Call any initial plugins when ready
     platform.ready().then(() => {
       // StatusBar.styleDefault();
       // Splashscreen.hide();
     });
+
+    console.log(initializeApp,database);
 
     // load the conference data
     confData.load();
